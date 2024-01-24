@@ -42,16 +42,16 @@ cols_reindexed = ['playerId', 'name', 'isForward', 'games_played', 'atoi', 'goal
                   'line_medDang_xGoals', 'line_highDang_xGoals', '5n5_fenwick%','5n5_line_sog', 
                   '5n4_sog', '5n4_atoi', '5n4_fenwick%', '5n4_line_sog']
 
-#function to import multiple files of player data from 2015-2023 nhl seasons and return a dict of the pandas dfs
 def import_data(years, base_filepath, df_cols):
+    #function to import multiple files of player data from 2015-2023 nhl seasons and return a dict of the pandas dfs
     dataframes = {}
     for year in years:
         filepath = f"{base_filepath}\\skaters{year}.csv"
         dataframes[year] = pd.read_csv(filepath_or_buffer=filepath, usecols=df_cols)
     return dataframes
 
-#function to preprocess all dfs and return a single, preprocessed df
 def preprocess_data(dataframes, keep_cols_lst, cols_5n5_dict, cols_5n4_dict):
+    #function to preprocess all dfs and return a single, preprocessed df
     dataframes_all = {} #dict for dfs with situation labeled as "all"
     dataframes_5n5 = {} #dict for dfs with situation labeled as "5on5"
     dataframes_5n4 = {} #dict for dfs with situation labeled as "5on4"
@@ -89,8 +89,8 @@ def preprocess_data(dataframes, keep_cols_lst, cols_5n5_dict, cols_5n4_dict):
         
     return df
 
-#conducting feature engineering, filtering, hot encoding, final column dropping, renaming, and reindexing. returns df
 def final_preprocessing(df):
+    #conducting feature engineering, filtering, hot encoding, final column dropping, renaming, and reindexing. returns df
     df = df[df['games_played']>19]  #filtering out players with less than 20 games played
     df['atoi'] = round((df['icetime'] / 60) / df['games_played'], 2)    #calculating average time on ice (in minutes). computing conversion from total seconds in a season to average minutes per game
     df['5n4_atoi'] = round((df['5n4_icetime'] / 60) / df['games_played'], 2)    #5on4 atoi (in minutes)
@@ -104,9 +104,13 @@ def final_preprocessing(df):
     
     return df
 
-#using above functions
-dataframes = import_data(years, base_filepath, df_cols) #reading csv files and saving them to dictionary called dataframes
-df = preprocess_data(dataframes, keep_cols_lst, cols_5n5_dict, cols_5n4_dict)   #preprocessing data from dfs stored in dataframes dict and returning a single df, 'df'
-df = final_preprocessing(df)    #conducting final preprocessing for the df
 
-df.to_csv('player_data.csv')    #export to new csv file
+def main():
+    dataframes = import_data(years, base_filepath, df_cols) #reading csv files and saving them to dictionary called dataframes
+    df = preprocess_data(dataframes, keep_cols_lst, cols_5n5_dict, cols_5n4_dict)   #preprocessing data from dfs stored in dataframes dict and returning a single df, 'df'
+    df = final_preprocessing(df)    #conducting final preprocessing for the df
+    df.to_csv('player_data.csv')    #export to new csv file
+    print('main executed successfully') #print statement to see if main method worked.
+
+if __name__ == "__main__":
+    main()
