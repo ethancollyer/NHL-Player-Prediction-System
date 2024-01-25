@@ -18,4 +18,5 @@ There are no issues when running the system but that doesn't mean it is without 
 1. The player statistics used as independent variables for the prediction system are very difficult to find and the only site I managed to see most of them on was moneypuck.com. I think this would make it difficult to make accurate goal/assist forecasts prior to a season due to the scarcity of these stats.
 2. Unless there is an accurate model for predicting all independent variables for an upcoming season, this system would probably only be useful somewhere around halfway through the season.
 3. I suspect this model is pretty bad at identifying breakout players which is what I think most teams would be interested in a model like this for, but perhaps it can help in fantasy hockey leagues.
-4. There are other issues I have thought of but the most important ones have been explained and I want to move on to other projects and wrap this README file up!
+4. Model for assists is probably overfitting on the training data and could use improvements.
+5. There are other issues I have thought of but the most important ones have been explained and I want to move on to other projects and wrap this README file up!
