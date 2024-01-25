@@ -11,7 +11,7 @@ Before reading this section, I'd encourage readers to understand what tolerance 
 
 **Goals:** The best-performing model was the random forest regressor. When using the test dataset, it achieved a 99.51% accuracy with a tolerance of 5, a 98.78% accuracy with a tolerance of 3, and a 92.44% accuracy with a tolerance of 1. Additionally, R2=0.99, mae=1.13, rmse=1.06. When using the whole dataset and a tolerance of 1, it achieved a 97.36% accuracy.
 
-**Assists:** Again, the best-performing model was the random forest regressor. Using the test dataset, it achieved a 78.9% accuracy with a tolerance of 5. No further tolerances were tested because this tolerance was already quite low. As for the other metrics on the test set, R2=0.83, mae=26.14, rmse=5.11. However, when predicting accuracy on the whole dataset, the model achieved a 92.22% accuracy with a tolerance of 5 and an 83.39% accuracy with a tolerance of 3.
+**Assists:** Again, the best-performing model was the random forest regressor. Using the test dataset, it achieved a 78.9% accuracy with a tolerance of 5. No further tolerances were tested because this tolerance was already quite low. As for the other metrics on the test set, R2=0.83, mae=26.14, rmse=5.11. However, when predicting accuracy on the whole dataset, the model achieved a 92.22% accuracy with a tolerance of 5 and an 83.39% accuracy with a tolerance of 3. The much higher accuracy in the overall dataset with a tolerance of 5 might indicate that the model is overfitting/memorizing the data rather than generalizing it well, so that is a potential issue to look into.
 
 ## Issues
 There are no issues when running the system but that doesn't mean it is without its flaws. 
